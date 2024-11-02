@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Calculator";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Simple Calculator</h1>
+    <form method="post" asp-action="Calculate">
+        <input type="number" name="firstNumber" placeholder="First Number" required>
+        <select name="operation">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="number" name="secondNumber" placeholder="Second Number" required>
+        <button type="submit">Calculate</button>
+    </form>
+
+    <h2>Result: @ViewData["Result"]</h2>
+
+    <h3>Recent Calculations:</h3>
+    <ul>
+        @foreach (var calculation in (List<string>)ViewData["RecentCalculations"])
+        {
+            <li>@calculation</li>
+        }
+    </ul>
+</div>
